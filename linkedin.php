@@ -39,6 +39,7 @@ if($_POST['frmAction']=="access"){
 
 }else if($_POST['frmAction']=="profile"){
 	$access_token = $_POST['access_token'];
+	$oo = $access_token;
 $ch = curl_init();
 	$request_headers = array(
                     "GET /v2/me HTTP/1.1",
@@ -54,13 +55,14 @@ $ch = curl_init();
 	$resultt = json_decode($result);
 	
 	
-	if($resultt->access_token){
+	/*if($resultt->access_token){
 		$profile = $resultt->access_token;
 	}else if($resultt->error){
 		$profile = $resultt->error;
 	}else{
 		$profile = "There was an error";
 	}
+	*/
 	curl_close($ch);	
 }
 		
