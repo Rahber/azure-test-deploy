@@ -7,7 +7,7 @@ $scope = "scope=r_liteprofile%20r_emailaddress%20w_member_social";
 $code = "";
 
 
-$firstString ="https://www.linkedin.com/oauth/v2/authorization?response_type=".$response_type."&client_id=".$client_id."&redirect_uri=".$redirect_uri."&state=".$scope;
+$firstString ="https://www.linkedin.com/oauth/v2/authorization?response_type=".$response_type."&client_id=".$client_id."&redirect_uri=".$redirect_uri."&scope=".$scope;
 if($_GET['code']){
 $code = $_GET['code'];
 }else if ($step==2){
