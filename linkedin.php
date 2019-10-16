@@ -1,5 +1,5 @@
 <?php
-//error_reporting(~E_NOTICE);
+error_reporting(~E_NOTICE);
 $response_type = "code";
 $client_id = "81j99zm1ygvajl";
 $redirect_uri = "https://app.rahberashraf.com/linkedin.php";
@@ -27,7 +27,7 @@ if($_POST){
 	curl_setopt($ch, CURLOPT_URL, "https://www.linkedin.com/oauth/v2/accessToken");
 	echo $result = (curl_exec($ch));
 	 $result = json_decode($result);
-	 $result['access_token'];
+	 $result[0]['access_token'];
 	/*
 	if($result['access_token']){
 		$oo = $result['access_token'];
