@@ -29,7 +29,7 @@ if($_POST){
 
 	echo $output[0]->access_token;
 	echo $output[1]->access_token;
-	echo $output->access_token
+	echo $output->access_token;
 	if($output[0]->access_token){
 		$oo = $output[0]->access_token;
 	}else if($output[0]->error){
