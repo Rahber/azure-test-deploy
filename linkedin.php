@@ -15,18 +15,26 @@ $code = $_GET['code'];
 }
 if($_POST){
 	
-	echo "this is in post";
+	
 	$ch = curl_init();
 	$request_headers = array(
                     "POST /oauth/v2/accessToken HTTP/1.1",
                     "Host: www.linkedin.com",
 					"Content-Type: application/x-www-form-urlencoded"
                 );	
-	$string = "grant_type=authorization_code&code=".$code."&redirect_uri=".$redirect_uri."&client_id=".$client_id."&client_secret=".$client_secret;
+	$string = "client_id=".$client_id."&grant_type=authorization_code&code=".$code."&redirect_uri=".$redirect_uri."&client_secret=".$client_secret;
 	curl_setopt($ch, CURLOPT_POSTFIELDS, $secondString );
 	curl_setopt($ch, CURLOPT_URL, "https://www.linkedin.com/oauth/v2/accessToken");           
   echo  $output = json_encode(curl_exec($ch));
 	$output = json_decode($output);
+	
+	if($output[0]->access_token){
+		$oo = $output[0]->access_token;
+	}else if($output[0]->error){
+		$oo = $output[0]->error;
+	}else{
+		$oo = "There was an error";
+	}
 
 }
 
@@ -50,4 +58,4 @@ if($_POST){
 
 <br />
 The Authorization Code is <input type="text" value="<?php echo $code; ?>" /><br />
-The Access Code is <input type="text" value="<?php echo $output[0]->access_token; ?>" />
+The Access Code is <input type="text" value="<?php echo $oo; ?>" />
