@@ -15,18 +15,18 @@ $code = $_GET['code'];
 }
 if($_POST){
 	
-	
 	$ch = curl_init();
 	$request_headers = array(
                     "POST /oauth/v2/accessToken HTTP/1.1",
                     "Host: www.linkedin.com",
 					"Content-Type: application/x-www-form-urlencoded"
                 );	
-	$string = "client_id=".$client_id."&grant_type=authorization_code&code=".$code."&redirect_uri=".$redirect_uri."&client_secret=".$client_secret;
+	$secondString = "client_id=".$client_id."&grant_type=authorization_code&code=".$code."&redirect_uri=".$redirect_uri."&client_secret=".$client_secret;
 	curl_setopt($ch, CURLOPT_POSTFIELDS, $secondString );
-	curl_setopt($ch, CURLOPT_URL, "https://www.linkedin.com/oauth/v2/accessToken");           
-  echo  $output = json_encode(curl_exec($ch));
-	$output = json_decode($output);
+	//curl_setopt($ch, CURLOPT_HTTPHEADER, $request_headers);
+	curl_setopt($ch, CURLOPT_URL, "https://www.linkedin.com/oauth/v2/accessToken");
+	  $output = curl_exec($ch);
+	echo $output = json_decode($output);
 	
 	if($output[0]->access_token){
 		$oo = $output[0]->access_token;
