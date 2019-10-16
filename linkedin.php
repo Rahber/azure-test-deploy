@@ -6,6 +6,8 @@ $client_secret = "aFdjSw3mKv8rdMYN";
 $scope = "scope=r_liteprofile%20r_emailaddress%20w_member_social";
 $code = "";
 
+
+$firstString ="https://www.linkedin.com/oauth/v2/authorization?response_type=".$response_type."&client_id=".$client_id."&redirect_uri=".$redirect_uri."&state=".$scope;
 if($_GET['code']){
 $code = $_GET['code'];
 }else if ($step==2){
@@ -23,6 +25,6 @@ $string = "grant_type=authorization_code&code=".$code."&redirect_uri=".$redirect
 ?>
 
 
-<a href ="" ><img src="https://content.linkedin.com/content/dam/developer/global/en_US/site/img/signin-button.png" /></a>
+<a href ="<?php echo $firstString ?>" ><img src="https://content.linkedin.com/content/dam/developer/global/en_US/site/img/signin-button.png" /></a>
 
 The Access Code is <input type="text><?php echo $code; ?></input>
