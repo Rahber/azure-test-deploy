@@ -23,19 +23,19 @@ if($_POST){
                 );	
 	$secondString = "client_id=".$client_id."&grant_type=authorization_code&code=".$code."&redirect_uri=".$redirect_uri."&client_secret=".$client_secret;
 	curl_setopt($ch, CURLOPT_POSTFIELDS, $secondString );
-	//curl_setopt($ch, CURLOPT_HTTPHEADER, $request_headers);
+	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 	curl_setopt($ch, CURLOPT_URL, "https://www.linkedin.com/oauth/v2/accessToken");
-	  $output = json_decode(curl_exec($ch));
+	  $result = json_decode(curl_exec($ch));
     echo "<br />Acess code 0 <br />";
-	echo $output[0]->access_token;
+	echo $result[0]->access_token;
 	echo "<br />Acess code 1 <br />";
-	echo $output[1]->access_token;
+	echo $result[1]->access_token;
 	echo "<br />Acess code empty <br />";
-	echo $output->access_token;
-	if($output[0]->access_token){
-		$oo = $output[0]->access_token;
-	}else if($output[0]->error){
-		$oo = $output[0]->error;
+	echo $result->access_token;
+	if($result[0]->access_token){
+		$oo = $result[0]->access_token;
+	}else if($result[0]->error){
+		$oo = $result[0]->error;
 	}else{
 		$oo = "There was an error";
 	}
