@@ -1,17 +1,21 @@
 <?php
+error_reporting(~E_NOTICE);
 $response_type = "code";
 $client_id = "81j99zm1ygvajl";
 $redirect_uri = "https://app.rahberashraf.com/linkedin.php";
 $client_secret = "aFdjSw3mKv8rdMYN";
 $scope = "r_liteprofile%20r_emailaddress%20w_member_social";
 $code = "";
+$current_uri = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 
 
 $firstString ="https://www.linkedin.com/oauth/v2/authorization?response_type=".$response_type."&client_id=".$client_id."&redirect_uri=".$redirect_uri."&scope=".$scope;
 if($_GET['code']){
 $code = $_GET['code'];
-
+}
 if($_POST){
+	
+	echo "this is in post";
 	$ch = curl_init();
 	$request_headers = array(
                     "POST /oauth/v2/accessToken HTTP/1.1",
@@ -25,7 +29,8 @@ if($_POST){
 	$output = json_decode($output);
 
 }
-}
+
+
 	
 
 
@@ -38,8 +43,9 @@ if($_POST){
 <br />
 <br />
 <br />
-<form  method="post">
-<button type="submit" formmethod="post">Verify Acess Toekn</button>
+<form action="<?php echo $current_uri?>" method="post">
+<input type="hidden" name="hidden">
+<input type="submit" value="Submit form">
 </form>
 
 <br />
