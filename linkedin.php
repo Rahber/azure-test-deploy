@@ -1,5 +1,5 @@
 <?php
-error_reporting(~E_NOTICE);
+//error_reporting(~E_NOTICE);
 $response_type = "code";
 $client_id = "81j99zm1ygvajl";
 $redirect_uri = "https://app.rahberashraf.com/linkedin.php";
@@ -25,9 +25,10 @@ if($_POST){
 	curl_setopt($ch, CURLOPT_POSTFIELDS, $secondString );
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 	curl_setopt($ch, CURLOPT_URL, "https://www.linkedin.com/oauth/v2/accessToken");
-	  $result = json_decode(curl_exec($ch));
+	echo $result = json_decode(curl_exec($ch));
 
 	
+	/*
 	if($result['access_token']){
 		$oo = $result['access_token'];
 	}else if($result['error']){
@@ -35,6 +36,7 @@ if($_POST){
 	}else{
 		$oo = "There was an error";
 	}
+	*/
 
 }
 
