@@ -26,24 +26,17 @@ if($_POST){
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 	curl_setopt($ch, CURLOPT_URL, "https://www.linkedin.com/oauth/v2/accessToken");
 	  $result = json_decode(curl_exec($ch));
-    echo "<br />Acess code 0 <br />";
-	echo $result[0]->access_token;
-	echo "<br />Acess code 1 <br />";
-	echo $result[1]->access_token;
-	echo "<br />Acess code empty <br />";
-	echo $result->access_token;
-	if($result[0]->access_token){
-		$oo = $result[0]->access_token;
-	}else if($result[0]->error){
-		$oo = $result[0]->error;
+
+	
+	if($result['access_token']){
+		$oo = $result['access_token'];
+	}else if($result['error']){
+		$oo = $result['error'];
 	}else{
 		$oo = "There was an error";
 	}
 
 }
-
-
-	
 
 
 
