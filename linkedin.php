@@ -11,6 +11,7 @@ $firstString ="https://www.linkedin.com/oauth/v2/authorization?response_type=".$
 if($_GET['code']){
 $code = $_GET['code'];
 
+if($_POST){
 	$ch = curl_init();
 	$request_headers = array(
                     "POST /oauth/v2/accessToken HTTP/1.1",
@@ -23,7 +24,7 @@ $code = $_GET['code'];
   echo  $output = json_encode(curl_exec($ch));
 	$output = json_decode($output);
 
-$string = "grant_type=authorization_code&code=".$code."&redirect_uri=".$redirect_uri."&client_id=".$client_id."&client_secret=".$client_secret;
+}
 }
 	
 
@@ -35,5 +36,12 @@ $string = "grant_type=authorization_code&code=".$code."&redirect_uri=".$redirect
 
 <a href ="<?php echo $firstString ?>" ><img src="https://content.linkedin.com/content/dam/developer/global/en_US/site/img/signin-button.png" /></a>
 <br />
-The Authorization Code is <input type="text"><?php echo $code; ?></input><br />
-The Access Code is <input type="text"><?php echo $output[0]->access_token; ?></input>
+<br />
+<br />
+<form  method="post">
+<button type="submit" formmethod="post">Verify Acess Toekn</button>
+</form>
+
+<br />
+The Authorization Code is <input type="text" value="<?php echo $code; ?>" /><br />
+The Access Code is <input type="text" value="<?php echo $output[0]->access_token; ?>" />
