@@ -44,13 +44,14 @@ $ch = curl_init();
 	$request_headers = array(
                     "GET /v2/me HTTP/1.1",
                     "Host: api.linkedin.com",
+					"X-RestLi-Protocol-Version:2.0.0",
 					"Connection: Keep-Alive",
 					"Authorization: Bearer ".$access_token
                 );	
 	//$secondString = "client_id=".$client_id."&grant_type=authorization_code&code=".$code."&redirect_uri=".$redirect_uri."&client_secret=".$client_secret;
 	//curl_setopt($ch, CURLOPT_POSTFIELDS, $secondString );
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-	curl_setopt($ch, CURLOPT_URL, "https://api.linkedin.com/v2/me");
+	curl_setopt($ch, CURLOPT_URL, "https://api.linkedin.com/v2/people/(id:45744062)");
 	echo $result = (curl_exec($ch));
 	$resultt = json_decode($result);
 	
