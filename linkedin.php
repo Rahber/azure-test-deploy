@@ -26,9 +26,11 @@ if($_POST){
 	//curl_setopt($ch, CURLOPT_HTTPHEADER, $request_headers);
 	curl_setopt($ch, CURLOPT_URL, "https://www.linkedin.com/oauth/v2/accessToken");
 	  $output = json_decode(curl_exec($ch));
-
+    echo "<br />Acess code 0 <br />";
 	echo $output[0]->access_token;
+	echo "<br />Acess code 1 <br />";
 	echo $output[1]->access_token;
+	echo "<br />Acess code empty <br />";
 	echo $output->access_token;
 	if($output[0]->access_token){
 		$oo = $output[0]->access_token;
@@ -47,7 +49,9 @@ if($_POST){
 
 
 ?>
-
+<br />
+<br />
+<br />
 
 <a href ="<?php echo $firstString ?>" ><img src="https://content.linkedin.com/content/dam/developer/global/en_US/site/img/signin-button.png" /></a>
 <br />
