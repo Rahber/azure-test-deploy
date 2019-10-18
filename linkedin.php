@@ -50,7 +50,7 @@
 		$resultt = json_decode($result);
 		if($resultt->localizedFirstName){
 			$profile = $resultt->localizedFirstName;
-			$image = resultt[0][1][1]->identifier;
+			$image = resultt[0][1][1][0][1]->identifier;
 		}else if($resultt->serviceErrorCode){
 			$profile = $resultt->message;
 		}else{
