@@ -51,6 +51,11 @@
 		if($resultt->localizedFirstName){
 			$profile = $resultt->localizedFirstName;
 			$image = resultt[0][1][1][0][1]->identifier;
+			
+			echo resultt[0] . "<br />";
+			echo resultt[0][1] . "<br />";
+			echo resultt[0][1][1] . "<br />";
+			echo resultt[0][1][1][0] . "<br />";
 		}else if($resultt->serviceErrorCode){
 			$profile = $resultt->message;
 		}else{
