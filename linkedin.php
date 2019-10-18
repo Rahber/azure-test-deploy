@@ -41,15 +41,16 @@
 			"GET /v2/me HTTP/1.1",
 			"Host: api.linkedin.com",
 			"X-RestLi-Protocol-Version:2.0.0",
-			"Authorization: Bearer ".$access_token,
+			"Authorization: Bearer #".$access_token,
 			"Connection: Keep-Alive"		
          );	
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-		curl_setopt($ch, CURLOPT_URL, "https://api.linkedin.com/v2/me?oauth2_access_token=".$access_token);
+		curl_setopt($ch, CURLOPT_URL, "https://api.linkedin.com/v2/me?projection=(localizedFirstName,profilePicture(displayImage~:playableStreams))&?oauth2_access_token=".$access_token);
 		$result = (curl_exec($ch));
 		$resultt = json_decode($result);
 		if($resultt->localizedFirstName){
 			$profile = $resultt->localizedFirstName;
+			$image = resultt->identifiers->identifier;
 		}else if($resultt->serviceErrorCode){
 			$profile = $resultt->message;
 		}else{
@@ -81,3 +82,4 @@ The Access Code is <input type="text" name ="access_token" value="<?php echo $oo
 <br />
 The Profile is <input type="text" value="<?php echo $profile; ?>" />
 <br />
+<img src="<?php echo $image; ?>" alt="" />
