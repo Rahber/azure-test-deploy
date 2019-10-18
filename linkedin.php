@@ -45,12 +45,12 @@
 			"Connection: Keep-Alive"		
          );	
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-		curl_setopt($ch, CURLOPT_URL, "https://api.linkedin.com/v2/me?projection=(localizedFirstName,profilePicture(displayImage~:playableStreams))&?oauth2_access_token=".$access_token);
+		curl_setopt($ch, CURLOPT_URL, "https://api.linkedin.com/v2/me?projection=(localizedFirstName,profilePicture(displayImage~:playableStreams))&oauth2_access_token=".$access_token);
 		$result = (curl_exec($ch));
 		$resultt = json_decode($result);
 		if($resultt->localizedFirstName){
 			$profile = $resultt->localizedFirstName;
-			$image = resultt->identifiers->identifier;
+			//$image = resultt->identifiers->identifier;
 		}else if($resultt->serviceErrorCode){
 			$profile = $resultt->message;
 		}else{
