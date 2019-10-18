@@ -45,16 +45,16 @@
 			"Connection: Keep-Alive"		
          );	
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-		curl_setopt($ch, CURLOPT_URL, "https://api.linkedin.com/v2/people/(id:45744062)");
-		echo $result = (curl_exec($ch));
+		curl_setopt($ch, CURLOPT_URL, "https://api.linkedin.com/v2/me?oauth2_access_token="$access_token.);
+		$result = (curl_exec($ch));
 		$resultt = json_decode($result);
-		/*if($resultt->access_token){
-			$profile = $resultt->access_token;
-		}else if($resultt->error){
-			$profile = $resultt->error;
+		if($resultt->localizedFirstName){
+			$profile = $resultt->localizedFirstName;
+		}else if($resultt->serviceErrorCode){
+			$profile = $resultt->message;
 		}else{
 			$profile = "There was an error";
-		}*/
+		}
 		curl_close($ch);	
 	}
 
