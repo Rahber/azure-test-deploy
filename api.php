@@ -1,11 +1,8 @@
 <?php
+$lines = file('users.html');
 
-$user = [
-    'id' => 4,
-    'name' => 'Dave'
-];
-
-$line = json_encode($user) . "\n";
-
-file_put_contents('users.ndjson', $line , FILE_APPEND);
+foreach ($lines as $line) {
+    $user = json_decode($line, true);
+    echo 'hello ' . $user['name'] . PHP_EOL;
+}
 ?>
