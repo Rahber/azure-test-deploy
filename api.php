@@ -1,3 +1,3 @@
-<?php
-echo "Your Order# " . $_GET['order'] ." is currently in process and will be on its way in next 2 hours" ;
-?>
+ {"some":"thing"}
+ {"foo":17,"bar":false,"quux":true}
+ {"may":{"include":"nested","objects":["and","arrays"]}}
