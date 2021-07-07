@@ -1,5 +1,3 @@
 <?php
-
-echo "Hello". $_GET['name']."!";
-}
+echo 'Hello ' . htmlspecialchars($_GET["name"]) . '!';
 ?>
